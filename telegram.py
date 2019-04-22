@@ -1,3 +1,5 @@
+import json
+
 import requests
 import vars
 
@@ -18,7 +20,9 @@ def sendPhoto(text, photo):
     url = getUrl(vars.TOKEN, 'sendPhoto')
     files = {'photo': open(photoPath, 'rb')}
     r = requests.post(url, data={'chat_id': '@zheevkino', 'caption': text}, files=files)
-    print(r.json())
+    out = open('data.txt', "wb")
+    out.write(b'a')
+    out.close()
 
 
 def sendMessage(text):
