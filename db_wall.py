@@ -7,6 +7,8 @@ def getLastIdWall():
     cursor.execute("""CREATE TABLE IF NOT EXISTS `list` (`id_wall` INT)""")
     conn.commit()
 
+    conn.close()
+
     sql = "SELECT `id_wall` FROM `list` ORDER BY rowid DESC LIMIT 1"
 
     cursor.execute(sql)
@@ -28,3 +30,5 @@ def insertIdWall(id):
     cursor.execute("INSERT INTO `list` (`id_wall`) VALUES ({})".format(int(id)))
 
     conn.commit()
+
+    conn.close()
