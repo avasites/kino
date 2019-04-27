@@ -5,9 +5,8 @@ def getLastIdWall():
     conn = sqlite3.connect("walls.db")
     cursor = conn.cursor()
     cursor.execute("""CREATE TABLE IF NOT EXISTS `list` (`id_wall` INT)""")
-    conn.commit()
 
-    conn.close()
+    conn.commit()
 
     sql = "SELECT `id_wall` FROM `list` ORDER BY rowid DESC LIMIT 1"
 
