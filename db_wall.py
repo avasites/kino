@@ -4,7 +4,6 @@ import sqlite3
 def getLastIdWall():
     conn = sqlite3.connect("walls.db")
     cursor = conn.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXISTS `list` (`id_wall` INT)""")
 
     conn.commit()
 
@@ -16,9 +15,8 @@ def getLastIdWall():
 
 def insertIdWall(id):
     conn = sqlite3.connect("walls.db")
-    cursor = conn.cursor()
 
-    cursor.execute("""CREATE TABLE IF NOT EXISTS `list` (`id_wall` INT)""")
+    cursor = conn.cursor()
 
     cursor.execute("DELETE FROM 'list' WHERE rowid = (SELECT rowid FROM 'list' LIMIT 1)")
 
