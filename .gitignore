@@ -1,0 +1,7 @@
+vars.py
+.idea
+photo/
+walls.db
+test.py
+__pycache__
+data.txt
