@@ -20,9 +20,9 @@ def insertIdWall(id):
 
     cursor.execute("""CREATE TABLE IF NOT EXISTS `list` (`id_wall` INT)""")
 
-    cursor.execute("DELETE FROM 'list' WHERE rowid = (SELECT rowid FROM 'list' ORDER BY rowid DESC LIMIT 1)")
+    cursor.execute("DELETE FROM 'list' WHERE rowid = (SELECT rowid FROM 'list' LIMIT 1)")
 
-    cursor.execute("INSERT INTO `list` (`id_wall`) VALUES ({})".format(int(id)))
+    cursor.execute("INSERT INTO `list` (`id_wall`) VALUES (?)", int(id))
 
     conn.commit()
 
