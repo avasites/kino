@@ -8,7 +8,7 @@ def getLastIdWall():
 
     conn.commit()
 
-    sql = "SELECT `id_wall` FROM `list` ORDER BY rowid DESC LIMIT 1"
+    sql = "SELECT `id_wall` FROM `list` LIMIT 1"
 
     cursor.execute(sql)
 
