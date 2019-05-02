@@ -20,6 +20,8 @@ def insertIdWall(id):
 
     cursor.execute("DELETE FROM 'list' WHERE rowid = (SELECT rowid FROM 'list' LIMIT 1)")
 
+    conn.commit()
+
     cursor.execute("INSERT INTO `list` (`id_wall`) VALUES (?)", int(id))
 
     conn.commit()
