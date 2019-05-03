@@ -1,19 +1,21 @@
 import requests
 import db_wall
 import telegram
-from vars import ACCESS_TOKEN
+from vars import A_T as ACCESS_TOKEN
 
 from urllib.parse import urlencode
 domain = 'https://api.vk.com/method/wall.get?'
+
 
 def getWalls(**kwargs):
     r = requests.get(domain+urlencode(kwargs))
     return r.json()
 
+
 if __name__ == '__main__':
     request = getWalls(domain='kino_mania', count=5, offset=1,
-                    access_token= ACCESS_TOKEN,
-                    v='5.95')
+                       access_token=ACCESS_TOKEN,
+                       v='5.95')
 
     walls = request['response']['items']
 
@@ -21,7 +23,7 @@ if __name__ == '__main__':
 
     for wall in walls:
         if wall['attachments']:
-            photos  = wall['attachments'][0]['photo']['sizes']
+            photos = wall['attachments'][0]['photo']['sizes']
             photo_for_send = photos[len(photos)-1]
             if maxId:
                 if int(maxId[0]) < int(wall['id']):
