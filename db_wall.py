@@ -1,3 +1,4 @@
+import sqlite3
 
 def getLastIdWall():
     conn = sqlite3.connect("walls.db")
