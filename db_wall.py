@@ -19,7 +19,7 @@ def insertIdWall(id):
 
     conn.commit()
 
-    cursor.execute("INSERT INTO `list` (`id_wall`) VALUES (?)", (int(id)))
+    cursor.execute("INSERT INTO `list` (`id_wall`) VALUES (?)", zip(int(id)))
 
     conn.commit()
 
