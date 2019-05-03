@@ -11,9 +11,11 @@ def getWalls(**kwargs):
     return r.json()
 
 if __name__ == '__main__':
-    walls = getWalls(domain='kino_mania', count=5, offset=1,
+    request = getWalls(domain='kino_mania', count=5, offset=1,
                     access_token= ACCESS_TOKEN,
-                    v='5.95')['response']['items']
+                    v='5.95')
+                    
+    walls = request['response']['items']
 
     maxId = db_wall.getLastIdWall()
 
@@ -27,4 +29,4 @@ if __name__ == '__main__':
             else:
                 telegram.sendPhoto(wall['text'], photo_for_send['url'])
 
-    db_wall.insertIdWall(list[0]['id'])
+    db_wall.insertIdWall(walls[0]['id'])
