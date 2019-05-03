@@ -14,7 +14,7 @@ if __name__ == '__main__':
     request = getWalls(domain='kino_mania', count=5, offset=1,
                     access_token= ACCESS_TOKEN,
                     v='5.95')
-                    
+
     walls = request['response']['items']
 
     maxId = db_wall.getLastIdWall()
