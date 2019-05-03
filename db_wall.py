@@ -4,9 +4,7 @@ import sqlite3
 def getLastIdWall():
     conn = sqlite3.connect("walls.db")
     cursor = conn.cursor()
-
-    conn.commit()
-
+    
     sql = "SELECT `id_wall` FROM `list` LIMIT 1"
 
     cursor.execute(sql)
