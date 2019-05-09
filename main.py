@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     for wall in walls:
         if 'attachments' in wall:
-            if wall['attachments'][0]['photo']:
+            if "photo" in wall['attachments'][0]:
                 photos = wall['attachments'][0]['photo']['sizes']
                 photo_for_send = photos[len(photos)-1]
                 if maxId:
@@ -31,5 +31,7 @@ if __name__ == '__main__':
                         telegram.sendPhoto(wall['text'], photo_for_send['url'])
                 else:
                     telegram.sendPhoto(wall['text'], photo_for_send['url'])
+            else:
+                telegram.sendMessage(wall['text'])
 
     db_wall.insertIdWall(walls[0]['id'])

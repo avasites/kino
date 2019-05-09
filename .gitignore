@@ -7,3 +7,4 @@ test.py
 __pycache__
 data.txt
 id.txt
+data_file.json
