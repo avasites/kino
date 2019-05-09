@@ -1,32 +1,17 @@
-import sqlite3
+import os
 
 
 def getLastIdWall():
-    conn = sqlite3.connect("walls.db")
+    id = 0
+    if os.path.exists('./id.txt'):
+        f = open('./id.txt')
+        id = f.read()
+        f.close()
 
-    cursor = conn.cursor()
-
-    sql = "SELECT `id_wall` FROM `list` LIMIT 1"
-
-    cursor.execute(sql)
-
-    return cursor.fetchone()
+    return int(id)
 
 
 def insertIdWall(id):
-    conn = sqlite3.connect("walls.db")
-
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "DELETE FROM 'list' WHERE rowid = (SELECT rowid FROM 'list' LIMIT 1)")
-
-    conn.commit()
-
-    id = int(id)
-
-    cursor.execute("INSERT INTO `list` (`id_wall`) VALUES (:id)", {'id': id})
-
-    conn.commit()
-
-    conn.close()
+    f = open('./id.txt', 'w')
+    f.write(str(id))
+    f.close()

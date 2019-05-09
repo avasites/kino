@@ -27,7 +27,7 @@ if __name__ == '__main__':
                 photos = wall['attachments'][0]['photo']['sizes']
                 photo_for_send = photos[len(photos)-1]
                 if maxId:
-                    if int(maxId[0]) < int(wall['id']):
+                    if int(maxId) < int(wall['id']):
                         telegram.sendPhoto(wall['text'], photo_for_send['url'])
                 else:
                     telegram.sendPhoto(wall['text'], photo_for_send['url'])
