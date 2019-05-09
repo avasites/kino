@@ -11,7 +11,7 @@ def getUrl(TOKEN, type):
 def getPhoto(photo):
     p = requests.get(photo)
     fotoName = photo.split('/')
-    name = "{0}/photo/{1}".format(os.getcwd(), fotoName[len(fotoName) - 1])
+    name = "{0}/photo/{1}".format(vars.PATH, fotoName[len(fotoName) - 1])
     out = open(name, "wb")
     out.write(p.content)
     out.close()
