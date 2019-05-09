@@ -32,4 +32,4 @@ if __name__ == '__main__':
                     else:
                         telegram.sendMessage(wall['text'])
 
-    db_wall.insertIdWall(walls[0]['id'])
+    db_wall.insertIdWall(str(walls[0]['id']))
