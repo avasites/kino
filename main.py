@@ -22,7 +22,7 @@ if __name__ == '__main__':
     maxId = db_wall.getLastIdWall()
 
     for wall in walls:
-        if wall['attachments']:
+        if 'attachments' in wall:
             if wall['attachments'][0]['photo']:
                 photos = wall['attachments'][0]['photo']['sizes']
                 photo_for_send = photos[len(photos)-1]
