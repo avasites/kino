@@ -22,16 +22,14 @@ if __name__ == '__main__':
     maxId = db_wall.getLastIdWall()
 
     for wall in walls:
-        if 'attachments' in wall:
-            if "photo" in wall['attachments'][0]:
-                photos = wall['attachments'][0]['photo']['sizes']
-                photo_for_send = photos[len(photos)-1]
-                if maxId:
-                    if int(maxId) < int(wall['id']):
+        if maxId:
+            if int(maxId) < int(wall['id']):
+                if 'attachments' in wall:
+                    if "photo" in wall['attachments'][0]:
+                        photos = wall['attachments'][0]['photo']['sizes']
+                        photo_for_send = photos[len(photos)-1]
                         telegram.sendPhoto(wall['text'], photo_for_send['url'])
-                else:
-                    telegram.sendPhoto(wall['text'], photo_for_send['url'])
-            else:
-                telegram.sendMessage(wall['text'])
+                    else:
+                        telegram.sendMessage(wall['text'])
 
     db_wall.insertIdWall(walls[0]['id'])
