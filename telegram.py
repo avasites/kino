@@ -1,4 +1,3 @@
-import os
 import requests
 import vars
 import json
@@ -25,7 +24,7 @@ def sendPhoto(text, photo):
     r = requests.post(url,
                       data={'chat_id': '@zheevkino', 'caption': text[:199]},
                       files=files)
-    with open("data_file.json", "w") as write_file:
+    with open("{}/data_file.json".format(vars.PATH), "w") as write_file:
         json.dump(r.json(), write_file)
 
 
